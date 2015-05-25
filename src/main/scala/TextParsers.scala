@@ -6,6 +6,8 @@ object TextParsers {
   val redirectRegex = (s"^\\#REDIRECT\\s*$singleLinkRegexString")r
   val singleLinkRegex = (singleLinkRegexString)r
 
+  val hashToTheEndOfTheLineRegex = "#.*$"r
+
   val nonParentChar = "[^)(]"
   val nonSquareBracketChar = "[^\\[\\]]"
   val parenthesesContainingLinks = (s"\\($nonParentChar*\\[\\[$nonSquareBracketChar*\\]\\]$nonParentChar*\\)")r
