@@ -17,11 +17,16 @@ object Runner {
       case (title, content) => (title, execute(strategies, content))
     })
   }
-
-  def main(args: Array[String]): Unit = {
-    val writer = CSVWriter.open(s"data/pairs.csv")
+  val csvPath = "data/pairs.csv"
+  def savePairsToCsv() = {
+    val writer = CSVWriter.open("data/pairs.csv")
     def resultingDataset: Iterable[Seq[String]] = getLinks().filter(_._2.isDefined).map(pr => Seq(pr._1, pr._2.get))
     resultingDataset.foreach(writer.writeRow(_))
     writer.close();
+  }
+
+  def main(args: Array[String]): Unit = {
+    //savePairsToCsv();
+    Persistence.printLineByLine(csvPath)
   }
 }
