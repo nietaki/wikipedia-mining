@@ -10,12 +10,17 @@ package analysis
  *
  * state is the state of the article in the search - to prevent looping the algorithm
  */
-class EntryProperties {
-  var parentEntryNames: List[String] = List()
-  var weight: Int = 1;
-  var state: DFSState = DFSState.NotVisited;
+class EntryProperties(var parentEntryNames: List[String],
+                      var weight: Int,
+                      var state: DFSState){
 
   def addParentEntry(entryName: String) = {
     parentEntryNames = entryName :: parentEntryNames
+  }
+}
+
+object EntryProperties{
+  def apply(parentEntryNames: List[String] = List(), weight: Int = 1, state: DFSState = DFSState.NotVisited) = {
+    new EntryProperties(parentEntryNames, weight, state)
   }
 }

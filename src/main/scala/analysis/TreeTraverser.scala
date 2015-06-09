@@ -15,7 +15,7 @@ object TreeTraverser {
 
     while(entries.hasNext) {
       val entry = entries.next()
-      val entryProperties = graph.getOrElseUpdate(entry.firstLink, new EntryProperties())
+      val entryProperties = graph.getOrElseUpdate(entry.firstLink, EntryProperties())
       entryProperties.addParentEntry(entry.title)
     }
     graph
