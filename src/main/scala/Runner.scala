@@ -1,6 +1,6 @@
-import java.io.{File, PrintWriter}
 import ParsingStrategies._
 import com.github.tototoshi.csv.CSVWriter
+import utils.Config
 
 /**
  * Created by nietaki on 05.01.15.
@@ -17,9 +17,8 @@ object Runner {
       case (title, content) => (title, execute(strategies, content))
     })
   }
-  val csvPath = "data/pairs.csv"
   def savePairsToCsv() = {
-    val writer = CSVWriter.open("data/pairs.csv")
+    val writer = CSVWriter.open(Config.pairsCsvLocation)
     def resultingDataset: Iterable[Seq[String]] = getLinks().filter(_._2.isDefined).map(pr => Seq(pr._1, pr._2.get))
     resultingDataset.foreach(writer.writeRow(_))
     writer.close();
@@ -27,6 +26,6 @@ object Runner {
 
   def main(args: Array[String]): Unit = {
     //savePairsToCsv();
-    Persistence.printLineByLine(csvPath)
+    //Persistence.printLineByLine(csvPath)
   }
 }

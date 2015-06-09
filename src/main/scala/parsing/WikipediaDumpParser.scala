@@ -1,11 +1,8 @@
 import java.io.FileInputStream
+
 import org.xml.sax.InputSource
-
-import scales.utils._
-import ScalesUtils._
+import scales.xml.ScalesXml._
 import scales.xml._
-import ScalesXml._
-
 /**
  * Created by nietaki on 23.05.15.
  */

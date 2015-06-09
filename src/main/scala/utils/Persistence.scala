@@ -1,3 +1,6 @@
+package utils
+
+import analysis.Entry
 import com.github.tototoshi.csv.CSVReader
 
 /**
@@ -15,6 +18,8 @@ object Persistence {
       }
     })
   }
+
+  def readEntriesFromCsv(path: String) = readFromCsv(path).map(kv => {Entry(kv._1, kv._2)})
 
   def printLineByLine(pathToCsv: String) = {
     readFromCsv(pathToCsv).foreach(pair => {
